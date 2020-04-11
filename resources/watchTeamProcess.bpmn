@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0oif59t" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.7.1">
+  <bpmn:process id="WatchTeamProcess" name="WatchTeamProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_10b3ll0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_12muzr4" name="Which team did you pick?">
+      <bpmn:incoming>Flow_06p0vu5</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ev0cd4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1j23udy</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Activity_022zova" name="Watch game">
+      <bpmn:incoming>Flow_0ev0cd4</bpmn:incoming>
+      <bpmn:outgoing>Flow_04dk1ks</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0ev0cd4" name="Barcelona" sourceRef="Gateway_12muzr4" targetRef="Activity_022zova">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{teamName == 'Barcelona'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0l6c7ct">
+      <bpmn:incoming>Flow_1j23udy</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1j23udy" sourceRef="Gateway_12muzr4" targetRef="Event_0l6c7ct" />
+    <bpmn:endEvent id="Event_0n2i7jk">
+      <bpmn:incoming>Flow_04dk1ks</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_04dk1ks" sourceRef="Activity_022zova" targetRef="Event_0n2i7jk" />
+    <bpmn:sequenceFlow id="Flow_10b3ll0" sourceRef="StartEvent_1" targetRef="Activity_13gdtz7" />
+    <bpmn:sequenceFlow id="Flow_06p0vu5" sourceRef="Activity_13gdtz7" targetRef="Gateway_12muzr4" />
+    <bpmn:userTask id="Activity_13gdtz7" name="Pick a team">
+      <bpmn:incoming>Flow_10b3ll0</bpmn:incoming>
+      <bpmn:outgoing>Flow_06p0vu5</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WatchTeamProcess">
+      <bpmndi:BPMNEdge id="Flow_0ev0cd4_di" bpmnElement="Flow_0ev0cd4">
+        <di:waypoint x="480" y="152" />
+        <di:waypoint x="480" y="80" />
+        <di:waypoint x="560" y="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="470" y="113" width="50" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1j23udy_di" bpmnElement="Flow_1j23udy">
+        <di:waypoint x="505" y="177" />
+        <di:waypoint x="722" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04dk1ks_di" bpmnElement="Flow_04dk1ks">
+        <di:waypoint x="660" y="80" />
+        <di:waypoint x="722" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10b3ll0_di" bpmnElement="Flow_10b3ll0">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="280" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06p0vu5_di" bpmnElement="Flow_06p0vu5">
+        <di:waypoint x="380" y="177" />
+        <di:waypoint x="455" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_12muzr4_di" bpmnElement="Gateway_12muzr4" isMarkerVisible="true">
+        <dc:Bounds x="455" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="443" y="209" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_022zova_di" bpmnElement="Activity_022zova">
+        <dc:Bounds x="560" y="40" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0l6c7ct_di" bpmnElement="Event_0l6c7ct">
+        <dc:Bounds x="722" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0n2i7jk_di" bpmnElement="Event_0n2i7jk">
+        <dc:Bounds x="722" y="62" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hqtnu9_di" bpmnElement="Activity_13gdtz7">
+        <dc:Bounds x="280" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
