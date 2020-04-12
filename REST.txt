@@ -1,0 +1,21 @@
+Cameunda with REST api
+
+POST call for process creation
+https://docs.camunda.org/manual/7.7/reference/rest/deployment/post-deployment/
+localhost:8080/engine-rest/deployment/create
+
+POST call to start the process
+https://docs.camunda.org/manual/7.7/reference/rest/process-definition/post-start-process-instance/
+localhost:8080/engine-rest/process-definition/key/WatchTeamProcess/start
+
+GET call to get all the task details
+https://docs.camunda.org/manual/7.7/reference/rest/task/get-query/
+localhost:8080/engine-rest/task/
+
+GET call to get the task details with processDefinitionKey=WatchTeamProcess
+localhost:8080/engine-rest/task?processDefinitionKey=WatchTeamProcess
+
+DELETE call to delete deployed process id
+https://docs.camunda.org/manual/7.7/reference/rest/deployment/delete-deployment/#example
+DELETE /deployment/aDeploymentId?cascade=true
+localhost:8080/engine-rest/deployment/92fc54cc-7cb0-11ea-a654-00ff1c797b9e?cascade=true
